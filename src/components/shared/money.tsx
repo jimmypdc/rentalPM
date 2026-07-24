@@ -10,7 +10,7 @@ export function Money({
   className,
   muteZero = false,
 }: {
-  value: number | string | null | undefined;
+  value: number | string | { toString(): string } | null | undefined;
   signed?: boolean;
   cents?: boolean;
   compact?: boolean;
