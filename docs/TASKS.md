@@ -41,6 +41,8 @@ Legend: [x] done · [~] partial/scaffolded · [ ] todo
 - [~] CSV import wizard (UI + validation; server import marked coming soon)
 
 ## Quality gates
-- [ ] `npm run lint`
-- [ ] `npm run typecheck`
-- [ ] `npm run build`
+- [x] `npm run lint` (clean)
+- [x] `npm run typecheck` (clean)
+- [x] `npm run build` (all ~55 routes)
+- [x] Runtime smoke test — every route renders 200 under an authenticated
+      session; auth protection redirects unauthenticated requests
