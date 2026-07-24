@@ -5,6 +5,7 @@ import {
   Users,
   FileText,
   CircleDollarSign,
+  PiggyBank,
   Wrench,
   HardHat,
   UserSquare,
@@ -50,6 +51,7 @@ export const navSections: NavSection[] = [
       { label: "Leases", href: "/leases", icon: FileText },
       { label: "Rent & Payments", href: "/payments", icon: CircleDollarSign },
       { label: "Rent Roll", href: "/rent-roll", icon: ScrollText },
+      { label: "Security Deposits", href: "/deposits", icon: PiggyBank },
     ],
   },
   {

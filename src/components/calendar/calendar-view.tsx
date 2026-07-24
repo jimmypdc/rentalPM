@@ -70,17 +70,20 @@ export function CalendarView({ events }: { events: CalendarEvent[] }) {
     [gridStart],
   );
 
-  const today = new Date();
+  const [today] = React.useState(() => new Date());
   const todayKey = dayKey(today);
+  const startOfTodayMs = React.useMemo(() => {
+    const d = new Date(today);
+    d.setHours(0, 0, 0, 0);
+    return d.getTime();
+  }, [today]);
 
   const upcoming = React.useMemo(() => {
-    const now = Date.now();
     return parsed
-      .filter((e) => e.when.getTime() >= new Date().setHours(0, 0, 0, 0))
-      .filter((e) => e.when.getTime() >= now - 86400000)
+      .filter((e) => e.when.getTime() >= startOfTodayMs)
       .sort((a, b) => a.when.getTime() - b.when.getTime())
       .slice(0, 12);
-  }, [parsed]);
+  }, [parsed, startOfTodayMs]);
 
   const monthLabel = cursor.toLocaleString("en-US", { month: "long", year: "numeric" });
 

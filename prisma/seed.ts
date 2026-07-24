@@ -2,7 +2,6 @@
 import {
   PrismaClient,
   Prisma,
-  ChargeStatus,
   MaintenanceStatus,
   Priority,
   MaintenanceCategory,
@@ -12,9 +11,7 @@ import {
   TaskCategory,
   LeaseStatus,
   UnitStatus,
-  TenantStatus,
   VendorCategory,
-  DepositStatus,
   InspectionType,
   ConditionRating,
   DocumentCategory,

@@ -32,7 +32,12 @@ export function MaintenanceBoard({ data }: { data: Record<string, MaintenanceCar
   const [dragId, setDragId] = React.useState<string | null>(null);
   const [overCol, setOverCol] = React.useState<string | null>(null);
 
-  React.useEffect(() => setBoard(data), [data]);
+  // Reset local board when fresh server data arrives (render-time sync — no effect).
+  const [seenData, setSeenData] = React.useState(data);
+  if (seenData !== data) {
+    setSeenData(data);
+    setBoard(data);
+  }
 
   function findCard(id: string): { card: MaintenanceCard; from: string } | null {
     for (const status of Object.keys(board)) {

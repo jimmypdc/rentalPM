@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -32,7 +32,6 @@ export function PaymentForm({
     register,
     handleSubmit,
     control,
-    watch,
     setValue,
     formState: { errors },
   } = useForm<PaymentInput>({
@@ -48,7 +47,7 @@ export function PaymentForm({
     },
   });
 
-  const tenantId = watch("tenantId");
+  const tenantId = useWatch({ control, name: "tenantId" });
   const chargeOptions: SelectOption[] = React.useMemo(
     () =>
       openCharges

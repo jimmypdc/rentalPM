@@ -23,7 +23,10 @@ export function AppShell({
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   React.useEffect(() => {
+    // Restore persisted sidebar state after mount (reads an external store;
+    // cannot run during SSR without a hydration mismatch).
     const saved = localStorage.getItem("rpm.sidebar.collapsed");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (saved) setCollapsed(saved === "1");
   }, []);
 

@@ -6,7 +6,7 @@ import { StatCard } from "@/components/shared/stat-card";
 import { Card } from "@/components/ui/card";
 import { PerformanceChart } from "@/components/shared/charts";
 import { ReportTable, type ReportColumn, type ReportRow } from "@/components/report/report-table";
-import { REPORTS } from "@/components/report/report-catalog";
+import { REPORTS } from "@/lib/reports-catalog";
 import { formatCurrency } from "@/lib/utils";
 import {
   rentRollReport,

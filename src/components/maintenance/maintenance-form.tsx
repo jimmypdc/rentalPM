@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -51,7 +51,6 @@ export function MaintenanceForm({
     register,
     handleSubmit,
     control,
-    watch,
     formState: { errors },
   } = useForm<MaintenanceInput>({
     resolver: zodResolver(maintenanceSchema),
@@ -73,7 +72,7 @@ export function MaintenanceForm({
     },
   });
 
-  const selectedProperty = watch("propertyId");
+  const selectedProperty = useWatch({ control, name: "propertyId" });
   const unitOptions = units.filter((u) => u.propertyId === selectedProperty);
 
   async function onSubmit(values: MaintenanceInput) {

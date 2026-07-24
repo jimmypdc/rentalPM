@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -43,7 +43,6 @@ export function ExpenseForm({ properties, vendors, units, initial }: ExpenseForm
     register,
     handleSubmit,
     control,
-    watch,
     formState: { errors },
   } = useForm<ExpenseInput>({
     resolver: zodResolver(expenseSchema),
@@ -62,7 +61,7 @@ export function ExpenseForm({ properties, vendors, units, initial }: ExpenseForm
     },
   });
 
-  const selectedProperty = watch("propertyId");
+  const selectedProperty = useWatch({ control, name: "propertyId" });
   const unitOptions = React.useMemo(
     () =>
       [{ value: NONE, label: "No specific unit" }].concat(

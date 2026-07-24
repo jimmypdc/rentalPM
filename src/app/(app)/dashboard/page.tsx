@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import {
   Building2, DoorOpen, Home, TrendingUp, CircleDollarSign, AlertCircle,
-  Receipt, Wrench, PiggyBank, CalendarClock, Percent, Banknote,
+  Receipt, Wrench, PiggyBank, Percent, Banknote,
   FileText, ClipboardCheck, ShieldAlert, Landmark, ListTodo, Activity,
 } from "lucide-react";
 import { getDashboardData } from "@/server/dashboard";

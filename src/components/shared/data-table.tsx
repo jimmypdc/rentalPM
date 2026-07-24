@@ -119,9 +119,10 @@ export function DataTable<T>({
     clampedPage * pageSize + pageSize,
   );
 
-  React.useEffect(() => {
+  function handleSearch(value: string) {
+    setQuery(value);
     setPage(0);
-  }, [query]);
+  }
 
   function toggleSort(key: string) {
     setSort((prev) => {
@@ -158,7 +159,7 @@ export function DataTable<T>({
               <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => handleSearch(e.target.value)}
                 placeholder={searchPlaceholder}
                 className="pl-8"
               />
